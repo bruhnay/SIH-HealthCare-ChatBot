@@ -40,13 +40,14 @@ ans=classifier("my blood pressure , the value is"+sequence_to_classify, candidat
 l.append(ans['labels'][0])
 print("What is your cholesterol level?")
 sequence_to_classify = input()
-candidate_labels = ['1','0','2']
-ans=classifier("my cholestrol , the value is"+sequence_to_classify, candidate_labels)
+candidate_labels = ['High','Medium','Low']
+ans=classifier("less than 200 is "+sequence_to_classify, candidate_labels)
 l.append(ans['labels'][0])
 
 df = pd.DataFrame(l)
-df.columns=['pat_data']
-df.index=['fever','cough','fatigue','breathing problems','age','gender','bp','cholesterol']
+df.columns=['']
+df.index=['Fever','Cough','Fatigue','Difficulty Breathing','Age','Gender','Blood Pressure','Cholesterol Level']
 df=df.transpose()
+#df.drop(df.columns[[0]], axis = 1, inplace = True)
 #d = df.pivot(index='ID', columns='Identifier', values='Value')
 df.to_csv("Out.csv")
